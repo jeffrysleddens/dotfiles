@@ -25,6 +25,8 @@ cd "$DIR" || (echo "ERROR: Could not change directory to $DIR"; exit 2)
 # then create symlinks from the homedir to any files in the ~/dotfiles
 # directory specified in $FILES.
 for FILE in $FILES; do
-  mv ~/."$FILE" "$OLDDIR"/
+  if [ -e ~/."$FILE" ]; then
+    mv ~/."$FILE" "$OLDDIR"/
+  fi
   ln -s "$DIR"/"$FILE" ~/."$FILE"
 done
