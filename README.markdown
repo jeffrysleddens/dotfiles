@@ -27,3 +27,6 @@ Credits
 -------
 Based on dotfiles by Michael J. Smalley:
 https://github.com/michaeljsmalley/dotfiles
+
+Other inspiration:
+https://dotfiles.github.io/
