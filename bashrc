@@ -1,0 +1,114 @@
+#
+# ~/.bashrc     This file makes settings and executes commands common
+#               to all logins.
+#
+
+
+# If not running interactively, don't do anything.
+[ -z "$PS1" ] && return
+
+#
+# Set global environment variables such as the path, manual path, etc.
+#
+export EDITOR="vim"
+export PAGER="less"
+export PATH="~/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/X11/bin:$PATH"
+export HOSTNAME="$(hostname -s)"
+export ignoreeof=0
+
+#
+# Make less more friendly for non-text input files, see lesspipe(1).
+#
+[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
+export LESS="-M -F -X -R"
+
+#
+# Set umask.
+#
+umask 022
+
+#
+# Set the 1st and 2nd prompt according to UID.
+#
+export PS1='\[\e[1;30m\][$HOSTNAME] $(if [ "$(id -u)" -eq 0 ] ; then echo "(root) " ; fi)<$(pwd="$PWD" ; while [ "$NSP" = "" -a "${#pwd}" -gt 20 ] ; do pwd="$(echo "$pwd" | sed "s,^/[^/]*,,")" ; done ; if [ "$pwd" = "$PWD" ] ; then echo "$PWD"; else echo "/---$pwd" ; fi)> \[\e[32m\]'
+export PS2="\[\e[1;37m\]>\[\e[1;32m\]"
+
+case "$TERM" in
+xterm*|rxvt*)
+  export PROMPT_COMMAND='echo -ne "\033]0;${USER} @ ${HOSTNAME}: ${PWD/$HOME/~}\007"'
+  ;;
+*)
+  ;;
+esac
+
+#
+# Set the color-ls colors.
+#
+export LS_OPTIONS="-F --color=auto"
+
+#
+# Set the history file.
+#
+export HISTCONTROL=erasedups
+export HISTFILE=~/.bash_history/bash_history.$HOSTNAME
+export HISTFILESIZE=50000
+export HISTSIZE=50000
+
+#
+# Some settings and aliases.
+#
+set -o vi
+alias cls=clear
+alias ls='ls --classify --color=auto --time-style=long-iso'
+alias vi=vim
+alias elm=mutt
+alias ldapsearch='ldapsearch -o ldif-wrap=no'
+alias grep='grep -I --color=auto'
+alias salt='sudo salt -v'
+alias mql='postqueue -j'
+alias mqd='postsuper -d'
+alias mqc='postcat -q'
+
+shopt -s checkwinsize
+shopt -s extglob
+shopt -s histappend
+
+export LC_COLLATE="C"
+
+if [ -f /etc/bash_completion ]; then
+  . /etc/bash_completion
+fi
+
+#
+# Function to run upon exit of shell.
+#
+function _exit()
+{
+    echo -n -e "${NC}"
+}
+trap _exit EXIT
+
+#
+# Set TMPDIR.
+#
+if [ ! -d ~/tmp ]; then
+  mkdir -p ~/tmp
+fi
+export TMPDIR=~/tmp
+
+#
+# Host specific configuration.
+#
+case "$HOSTNAME" in
+elena)
+  unset HISTFILE
+  ;;
+login)
+  export IRCNICK="Redhound"
+  export IRCNAME="Scene.Org!"
+  export IRCUMODE="+i-ws"
+  export IRCSERVER="irc.snt.utwente.nl"
+  ;;
+*)
+  ;;
+esac
