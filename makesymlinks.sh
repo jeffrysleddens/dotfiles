@@ -9,7 +9,7 @@
 
 DIR=~/.dotfiles
 OLDDIR=~/.dotfiles_old
-FILES="bash_profile bashrc vimrc vim"
+FILES="bash_profile bashrc profile vimrc vim"
 
 ##########
 
