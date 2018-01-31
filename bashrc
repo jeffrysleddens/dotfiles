@@ -103,12 +103,6 @@ case "$HOSTNAME" in
 elena)
   unset HISTFILE
   ;;
-login)
-  export IRCNICK="Redhound"
-  export IRCNAME="Scene.Org!"
-  export IRCUMODE="+i-ws"
-  export IRCSERVER="irc.snt.utwente.nl"
-  ;;
 *)
   ;;
 esac
