@@ -78,6 +78,7 @@ export LC_COLLATE="C"
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
+complete -W "hro.nl hr.nl 24.145.in-addr.arpa" zonedit
 
 #
 # Function to run upon exit of shell.
