@@ -64,7 +64,7 @@ alias vi=vim
 alias elm=mutt
 alias ldapsearch='ldapsearch -o ldif-wrap=no'
 alias grep='grep -I --color=auto'
-alias salt='sudo salt -v'
+alias salt='sudo salt --sate-verbose=false --state-output=changes --force-color -v'
 alias mql='postqueue -j'
 alias mqd='postsuper -d'
 alias mqc='postcat -q'
