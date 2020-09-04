@@ -1,0 +1,23 @@
+# the following two lines give a two-line status, with the current window highlighted
+hardstatus alwayslastline
+hardstatus string '%{= KG}[ %{G}%H %{g}][%= %{=Kw}%?%{KY}%-Lw%?%{R}|%{W}%n*%f %t%?(%u)%?%{R}|%{w}%?%{KY}%+Lw%?%?%= %{g}][%{G} %Y-%m-%d %{G}%c %{g}]'
+
+# huge scrollback buffer
+defscrollback 100000
+
+# no welcome message
+startup_message off
+
+# 256 colors
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on
+
+# navigating regions with Ctrl-arrows
+#bindkey "^[[1;5D" prev
+#bindkey "^[[1;5C" next
+
+bindkey "^A^[OC" next
+bindkey "^A^[OD" prev
+
+termcapinfo xterm* ti@:te@
