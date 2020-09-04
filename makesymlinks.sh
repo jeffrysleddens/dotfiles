@@ -7,9 +7,9 @@
 
 ########## Variables
 
-DIR=~/.dotfiles
+DIR=~/.dotfiles/files
 OLDDIR=~/.dotfiles_old
-FILES="bash_profile bashrc profile vimrc vim"
+FILES="bash_profile bashrc profile screenrc vimrc vim"
 
 ##########
 
@@ -24,7 +24,7 @@ cd "$DIR" || (echo "ERROR: Could not change directory to $DIR"; exit 2)
 # Move any existing dotfiles in homedir to dotfiles_old directory,
 # then create symlinks from the homedir to any files in the ~/dotfiles
 # directory specified in $FILES.
-for FILE in $FILES; do
+for FILE in *; do
   if [ -h ~/."$FILE" ]; then
     rm -f ~/."$FILE"
   elif [ -e ~/."$FILE" ]; then
