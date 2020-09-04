@@ -64,7 +64,7 @@ alias vi=vim
 alias elm=mutt
 alias ldapsearch='ldapsearch -o ldif-wrap=no'
 alias grep='grep -I --color=auto'
-alias salt='sudo salt --sate-verbose=false --state-output=changes --force-color -v'
+alias salt='sudo salt --state-verbose=false --state-output=changes --force-color -v'
 alias mql='postqueue -j'
 alias mqd='postsuper -d'
 alias mqc='postcat -q'
@@ -107,3 +107,12 @@ elena)
 *)
   ;;
 esac
+
+#
+# Set the screen window title when using ssh
+#
+function ssh() {
+  echo -e '\033k'@$1'\033\\' >&2
+  command ssh -Y "$@"
+  echo -e '\033k'local'\033\\' >&2
+}
