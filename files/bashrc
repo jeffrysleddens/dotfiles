@@ -37,7 +37,7 @@ export PS2="\[\e[1;37m\]>\[\e[1;32m\]"
 # Set the window title of the terminal
 #
 case "$TERM" in
-xterm*|rxvt*)
+putty*|xterm*|rxvt*)
   export PROMPT_COMMAND='echo -ne "\033]0;${USER} @ ${HOSTNAME}: ${PWD/$HOME/~}\007"'
   ;;
 screen*)
