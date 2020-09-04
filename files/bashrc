@@ -33,9 +33,15 @@ umask 022
 export PS1='\[\e[1;30m\][$HOSTNAME] $(if [ "$(id -u)" -eq 0 ] ; then echo "(root) " ; fi)<$(pwd="$PWD" ; while [ "$NSP" = "" -a "${#pwd}" -gt 20 ] ; do pwd="$(echo "$pwd" | sed "s,^/[^/]*,,")" ; done ; if [ "$pwd" = "$PWD" ] ; then echo "$PWD"; else echo "/---$pwd" ; fi)> \[\e[32m\]'
 export PS2="\[\e[1;37m\]>\[\e[1;32m\]"
 
+#
+# Set the window title of the terminal
+#
 case "$TERM" in
 xterm*|rxvt*)
   export PROMPT_COMMAND='echo -ne "\033]0;${USER} @ ${HOSTNAME}: ${PWD/$HOME/~}\007"'
+  ;;
+screen*)
+  export PROMPT_COMMAND='echo -ne "\033]0;${USER} @ ${HOSTNAME}: ${PWD/$HOME/~}\007\033k${HOSTNAME}\033\\"'
   ;;
 *)
   ;;
@@ -107,12 +113,3 @@ elena)
 *)
   ;;
 esac
-
-#
-# Set the screen window title when using ssh
-#
-function ssh() {
-  echo -e '\033k'@$1'\033\\' >&2
-  command ssh -Y "$@"
-  echo -e '\033k'local'\033\\' >&2
-}

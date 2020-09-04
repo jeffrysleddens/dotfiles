@@ -6,20 +6,19 @@ hardstatus string '%{= KG}[ %{G}%H %{g}][%= %{=Kw}%?%{KY}%-Lw%?%{R}|%{W}%n*%f %t
 attrcolor b ".I"
 
 # Tell screen how to set colors. AB = background, AF=foreground
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo putty*|xterm*|rxvt* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 
 # Enables use of shift-PgUp and shift-PgDn
-termcapinfo xterm*|xterms|xs|rxvt ti@:te@
+termcapinfo putty*|xterm*|rxvt* ti@:te@
 
 # Erase background with current bg color
 defbce "on"
 
-# Enable 256 color term
-term xterm-256color
+# Enable true color (24bit) support
 truecolor on
 
 # huge scrollback buffer
-defscrollback 100000
+defscrollback 102400
 
 # no welcome message
 startup_message off
