@@ -28,3 +28,6 @@ bindkey "^A^[OC" next
 bindkey "^A^[OD" prev
 
 altscreen on
+
+# visual bell off
+vbell off
