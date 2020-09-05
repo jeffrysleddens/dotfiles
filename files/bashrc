@@ -41,7 +41,7 @@ putty*|xterm*|rxvt*)
   export PROMPT_COMMAND='echo -ne "\033]0;${USER} @ ${HOSTNAME}: ${PWD/$HOME/~}\007"'
   ;;
 screen*)
-  export PROMPT_COMMAND='echo -ne "\033]0;${USER} @ ${HOSTNAME}: ${PWD/$HOME/~}\007\033k${HOSTNAME}\033\\"'
+  export PROMPT_COMMAND='~jeffry/.screen-title.bash'
   ;;
 *)
   ;;
