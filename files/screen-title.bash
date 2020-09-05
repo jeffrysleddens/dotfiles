@@ -7,7 +7,7 @@ TITLE="$HN:./${array[-1]}"
 
 if [[ "$PWD" =~ $HOME/src/(.*) ]] ; then
   if [ "${array[3]}" == "src" ] && [ ! -z "${array[4]}" ]; then
-    TITLE="G:${array[4]}"
+    TITLE="$HN:GIT:${array[4]}"
   fi
 fi
 

@@ -1,6 +1,6 @@
 # the following two lines give a two-line status, with the current window highlighted
 hardstatus alwayslastline
-hardstatus string '%{= KG}[ %{G}%H %{g}][%= %{=Kw}%?%{KY}%-Lw%?%{R}|%{W}%n*%f %t%?(%u)%?%{R}|%{w}%?%{KY}%+Lw%?%?%= %{g}][%{G} %Y-%m-%d %{G}%c %{g}]'
+hardstatus string '%{= Kg}[ %{G}%H %{g}][%= %{=Kw}%?%{KY}%-Lw%?%{R}|%{W}%n*%f %t%?(%u)%?%{R}|%{w}%?%{KY}%+Lw%?%?%= %{g}][%{G} %Y-%m-%d %{G}%c %{g}]'
 
 # Allow bold colors - necessary for some reason
 attrcolor b ".I"
@@ -31,3 +31,4 @@ altscreen on
 
 # visual bell off
 vbell off
+bell_msg ""
