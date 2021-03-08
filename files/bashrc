@@ -37,9 +37,15 @@ export PS2="\[\e[1;37m\]>\[\e[1;32m\]"
 # Set the window title of the terminal
 #
 case "$TERM" in
+putty-256color)
+  test -f /usr/share/terminfo/p/putty-256color || export TERM="xterm-256color"
+  ;;&
 putty*|xterm*|rxvt*)
   export PROMPT_COMMAND='echo -ne "\033]0;${USER} @ ${HOSTNAME}: ${PWD/$HOME/~}\007"'
   ;;
+screen.putty-256color)
+  test -f /usr/share/terminfo/s/screen.putty-256color || export TERM="screen-256color"
+  ;;&
 screen*)
   export PROMPT_COMMAND='~jeffry/.screen-title.bash'
   ;;
